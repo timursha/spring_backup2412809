@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все Юзеры</title>
+</head>
+<body>
+<p>все юзеры:</p>
+<div th:each="user : ${users}">
+    <a th:href="@{users/edituser/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+    <a th:href="@{users/edituser/{id}(id=${user.getId()})}" th:text="изменить">изменить</a>
+    <a th:href="@{users/remove/{id}(id=${user.getId()})}" th:text="удалить">user</a>
+</div>
+<br>
+<a th:href="@{users/new}" th:text="добавить">user</a>
+
+
+</body>
+</html>
