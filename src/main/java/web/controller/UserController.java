@@ -26,7 +26,6 @@ public class UserController {
         //we will have a key "users" that give us an array of users
         model.addAttribute("users", userServiceEntityImpl.listUsers());
         // getting all users
-
         return "index_users";
     }
     @GetMapping("/{id}")
