@@ -4,6 +4,8 @@ import org.hibernate.annotations.ManyToAny;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,14 +17,14 @@ public class Role implements GrantedAuthority {
     @Column
     String role;
 
-    public Role(long id, String role, Set<User> users) {
+    public Role(long id, String role, List<User> users) {
         this.id = id;
         this.role = role;
         this.users = users;
     }
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private List<User> users = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -43,11 +45,11 @@ public class Role implements GrantedAuthority {
         this.role = role;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

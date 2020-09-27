@@ -12,8 +12,20 @@
     <span th:text="*{id}"/>
     <input type="text" name="name" th:field="*{name}">
     <input type="email" name="email" th:field="*{email}">
+    <input type="text" name="password" th:field="*{password}">
     <input type="submit" value="Изменить">
-
+    <div class="form-group">
+        <label th:for="*{roles}">РОЛИ</label>
+          <select multiple class="form-control " th:field="*{roles}">
+              <option th:value="ROLE_ADMIN" th:utext="ROLE_ADMIN">ROLE_ADMIN</option>
+              <option th:value="ROLE_USER" th:utext="ROLE_USER">ROLE_USER</option>
+          </select>
+<!--        <select th:field="*{role}">-->
+<!--            <option th:each="type : ${allTypes}"-->
+<!--                    th:value="${type}"-->
+<!--                    th:text="#{${'seedstarter.type.' + type}}">Wireframe</option>-->
+<!--        </select>-->
+    </div>
 </form>
 </body>
 </html>
