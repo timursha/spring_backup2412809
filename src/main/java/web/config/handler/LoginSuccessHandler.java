@@ -14,6 +14,22 @@ import java.util.Set;
 
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
+//
+//    @Override
+//    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+//                                        HttpServletResponse httpServletResponse,
+//                                        Authentication authentication) throws IOException, ServletException {
+//        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+//        if (roles.contains("ROLE_ADMIN")) {
+//            httpServletResponse.sendRedirect("/admin/");
+//        } else if (roles.contains("ROLE_USER")) {
+//            User user = (User)authentication.getPrincipal();
+//            httpServletResponse.sendRedirect("/user");
+//        }
+//
+//    }
+
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
@@ -21,11 +37,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
-            httpServletResponse.sendRedirect("/admin/");
+            httpServletResponse.sendRedirect("/admin");
         } else if (roles.contains("ROLE_USER")) {
             User user = (User)authentication.getPrincipal();
-            httpServletResponse.sendRedirect("/user");
+            httpServletResponse.sendRedirect("/user/" + user.getId());
         }
-
     }
 }

@@ -8,7 +8,9 @@ import web.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,9 +30,7 @@ public class UserDaoEntityImpl implements UserDao{
 //    }
 @Override
 public void addUser(User user) {
-    Set <Role> roles = new HashSet<>();
-    roles.add(roleDao.getOne(1L));
-    user.setRoles(roles);
+//    user.setRoles(new HashSet<>(Arrays.asList(roleDao.getOne(2L))));
     entityManager.persist(user);
 }
 
@@ -59,8 +59,9 @@ public void addUser(User user) {
 
     @Override
     public List<User> listUsers() {
-        users = entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
-        return users;
+        Query query = (Query) entityManager.createQuery("SELECT u FROM User u", User.class);
+
+        return (List<User>) query.getResultList();
     }
 }
 

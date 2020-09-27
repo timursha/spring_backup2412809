@@ -5,9 +5,9 @@
     <title>Edit user</title>
 </head>
 <body>
-<p>:</p>
+<p>edit user</p>
 
-<form th:action="@{/users/edituser/}" th:object="${user}" method="post">
+<form th:action="@{/admin/users/edituser}" th:object="${user}" method="post">
     <input type="hidden" name="id" th:field="*{id}">
     <span th:text="*{id}"/>
     <input type="text" name="name" th:field="*{name}">

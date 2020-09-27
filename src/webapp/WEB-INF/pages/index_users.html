@@ -6,13 +6,16 @@
 </head>
 <body>
 <p>все юзеры:</p>
+<!--<tr th:if="${users.empty}">-->
+<!--    <td colspan="2"> No Users Available </td>-->
+<!--</tr>-->
 <div th:each="user : ${users}">
-    <a th:href="@{users/edituser/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
-    <a th:href="@{users/edituser/{id}(id=${user.getId()})}" th:text="изменить">изменить</a>
-    <a th:href="@{users/remove/{id}(id=${user.getId()})}" th:text="удалить">user</a>
+    <a th:href="@{/admin/users/edituser/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+    <a th:href="@{/admin/users/edituser/{id}(id=${user.getId()})}" th:text="изменить">изменить</a>
+    <a th:href="@{/admin/users/remove/{id}(id=${user.getId()})}" th:text="удалить">user</a>
 </div>
 <br>
-<a th:href="@{users/new}" th:text="добавить">user</a>
+<a th:href="@{/admin/users/new}" th:text="добавить">user</a>
 
 
 </body>
